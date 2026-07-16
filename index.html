@@ -1,50 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adiyan Live TV</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
 
-    <!-- HLS Player -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-    <!-- Firebase -->
-    <script type="module" src="app.js"></script>
+<title>Adiyan Live TV</title>
+
+<meta name="theme-color" content="#111111">
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
 </head>
 
 <body>
 
-<header class="header">
-    <h1>📺 Adiyan Live TV</h1>
-</header>
+<header>
 
-<div class="player-box">
+<div class="logo">
 
-    <video
-        id="videoPlayer"
-        controls
-        autoplay
-        playsinline>
-    </video>
+📺 Adiyan Live TV
 
 </div>
 
-<div class="search-box">
+<div class="search">
 
 <input
 type="text"
-id="search"
+id="searchInput"
 placeholder="Search Channel...">
 
 </div>
 
-<div id="channelList" class="channel-list">
+</header>
 
-<!-- Channels will load here -->
+<main>
+
+<section class="player-section">
+
+<video
+id="video"
+controls
+autoplay
+playsinline
+poster="assets/default.png">
+
+</video>
+
+<div class="player-title"
+id="playerTitle">
+
+No Channel Selected
 
 </div>
 
+</section>
+
+<section
+id="channelList"
+class="channel-list">
+
+<!-- Firebase Channels -->
+
+</section>
+
+</main>
+
+<script
+type="module"
+src="app.js">
+
+</script>
+
 </body>
+
 </html>
