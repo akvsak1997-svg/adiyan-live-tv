@@ -1,61 +1,104 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-body{
-    background:#111;
-    color:#fff;
+body {
+    background: #0f172a;
+    color: white;
 }
 
-.header{
-    background:#d60000;
-    padding:15px;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
-    position:sticky;
-    top:0;
-    z-index:999;
+/* Header */
+header {
+    background: #1e293b;
+    padding: 20px;
+    text-align: center;
 }
 
-.player-box{
-    width:100%;
-    max-width:1000px;
-    margin:15px auto;
-    padding:10px;
+header h1 {
+    font-size: 28px;
+    color: #38bdf8;
 }
 
-#videoPlayer{
-    width:100%;
-    background:#000;
-    border-radius:10px;
-    border:2px solid #333;
+header p {
+    margin-top: 8px;
+    color: #cbd5e1;
 }
 
-.search-box{
-    width:95%;
-    max-width:700px;
-    margin:15px auto;
+
+/* Main Container */
+main {
+    padding: 20px;
 }
 
-#search{
-    width:100%;
-    padding:12px;
-    font-size:16px;
-    border:none;
-    border-radius:8px;
-    outline:none;
+
+/* Video Player */
+.video-box {
+    width: 100%;
+    background: black;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
-.channel-list{
-    width:95%;
-    max-width:1000px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:10px;
-    padding-bottom:20px;
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Channel List */
+.channel-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+
+/* Channel Card */
+.channel-card {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.channel-card:hover {
+    background: #334155;
+    transform: scale(1.03);
+}
+
+
+.channel-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+
+.channel-card h3 {
+    font-size: 16px;
+}
+
+
+/* Mobile Responsive */
+@media(max-width:600px){
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .channel-list {
+        grid-template-columns: repeat(2,1fr);
+    }
 }
