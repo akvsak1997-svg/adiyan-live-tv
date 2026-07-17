@@ -1,104 +1,381 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+/* ==========================
+   Adiyan Live TV
+   style.css
+   Part-1
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    background: #0f172a;
-    color: white;
+body{
+    background:#0d1117;
+    color:#ffffff;
+    font-family:'Poppins',sans-serif;
 }
 
-/* Header */
-header {
-    background: #1e293b;
-    padding: 20px;
-    text-align: center;
+.container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
 }
 
-header h1 {
-    font-size: 28px;
-    color: #38bdf8;
+.header{
+    width:100%;
+    background:#161b22;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,.4);
 }
 
-header p {
-    margin-top: 8px;
-    color: #cbd5e1;
+.logo{
+    font-size:28px;
+    font-weight:700;
+    color:#00d4ff;
 }
 
-
-/* Main Container */
-main {
-    padding: 20px;
+.search-box{
+    width:350px;
+    max-width:100%;
 }
 
-
-/* Video Player */
-.video-box {
-    width: 100%;
-    background: black;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
+.search-box input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#21262d;
+    color:#ffffff;
+    font-size:16px;
+    outline:none;
 }
 
-video {
-    width: 100%;
-    height: auto;
-    display: block;
+.search-box input::placeholder{
+    color:#999999;
 }
 
-
-/* Channel List */
-.channel-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
+.player-area{
+    width:95%;
+    margin:20px auto;
 }
 
-
-/* Channel Card */
-.channel-card {
-    background: #1e293b;
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: center;
-    transition: 0.3s;
+#videoPlayer{
+    width:100%;
+    border-radius:12px;
+    background:#000000;
 }
 
-.channel-card:hover {
-    background: #334155;
-    transform: scale(1.03);
+.player-info{
+    margin-top:15px;
 }
 
-
-.channel-card img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 10px;
+.player-info h2{
+    font-size:24px;
+    margin-bottom:8px;
 }
 
+.player-info p{
+    color:#bdbdbd;
+    font-size:15px;
+}
+/* ==========================
+   Part-2
+   Channel Card
+========================== */
 
-.channel-card h3 {
-    font-size: 16px;
+.channel-list{
+    width:95%;
+    margin:25px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:18px;
 }
 
+.channel-card{
+    background:#161b22;
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.3s;
+    border:1px solid #2d333b;
+}
 
-/* Mobile Responsive */
-@media(max-width:600px){
+.channel-card:hover{
+    transform:translateY(-5px);
+    border-color:#00d4ff;
+    box-shadow:0 8px 20px rgba(0,212,255,.25);
+}
 
-    header h1 {
-        font-size: 22px;
-    }
+.channel-card img{
+    width:100%;
+    height:140px;
+    object-fit:cover;
+    background:#000;
+}
 
-    main {
-        padding: 10px;
-    }
+.channel-content{
+    padding:15px;
+}
 
-    .channel-list {
-        grid-template-columns: repeat(2,1fr);
-    }
+.channel-content h3{
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.channel-content p{
+    color:#9ca3af;
+    font-size:14px;
+}
+
+/* ==========================
+   Player Buttons
+========================== */
+
+.player-controls{
+    width:95%;
+    margin:20px auto;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.player-controls button{
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+    background:#00d4ff;
+    color:#000;
+}
+
+.player-controls button:hover{
+    transform:scale(1.05);
+}
+
+#stopBtn{
+    background:#ff4d4d;
+    color:#fff;
+}
+
+#fullscreenBtn{
+    background:#22c55e;
+    color:#fff;
+}
+
+/* ==========================
+   Loading Animation
+========================== */
+
+.loading{
+    display:none;
+    text-align:center;
+    padding:30px;
+}
+
+.loading.show{
+    display:block;
+}
+
+.loader{
+    width:45px;
+    height:45px;
+    border:5px solid #333;
+    border-top:5px solid #00d4ff;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin:auto;
+}
+
+@keyframes spin{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+/* ==========================
+   Error Box
+========================== */
+
+.error-box{
+    display:none;
+    width:95%;
+    margin:20px auto;
+    padding:15px;
+    background:#8b0000;
+    color:#fff;
+    border-radius:8px;
+    text-align:center;
+}
+
+.error-box.show{
+    display:block;
+}
+
+/* ==========================
+   Mobile Responsive
+========================== */
+
+@media(max-width:768px){
+
+.header{
+    flex-direction:column;
+    gap:15px;
+}
+
+.logo{
+    font-size:22px;
+}
+
+.search-box{
+    width:100%;
+}
+
+.player-controls{
+    justify-content:center;
+}
+
+.player-controls button{
+    flex:1;
+    min-width:120px;
+}
+
+.channel-list{
+    grid-template-columns:1fr;
+}
+
+.channel-card img{
+    height:180px;
+}
+
+.player-info h2{
+    font-size:20px;
+}
+
+}
+/* ==========================
+   Part-3 (Final)
+========================== */
+
+/* Footer */
+
+.footer{
+    width:100%;
+    margin-top:40px;
+    padding:20px;
+    background:#161b22;
+    text-align:center;
+    color:#bdbdbd;
+    font-size:14px;
+}
+
+/* Toast Notification */
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#00d4ff;
+    color:#000;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:600;
+    display:none;
+    z-index:9999;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.toast.show{
+    display:block;
+    animation:fadeIn .3s ease;
+}
+
+/* Offline Banner */
+
+.offline-banner{
+    display:none;
+    width:100%;
+    background:#ff3b30;
+    color:#fff;
+    text-align:center;
+    padding:10px;
+    font-weight:bold;
+}
+
+.offline-banner.show{
+    display:block;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0d1117;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00d4ff;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#00a6cc;
+}
+
+/* Smooth Animation */
+
+button,
+.channel-card,
+input{
+    transition:all .25s ease;
+}
+
+/* Fade Animation */
+
+@keyframes fadeIn{
+
+from{
+    opacity:0;
+    transform:translateY(20px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
+/* Utility */
+
+.hidden{
+    display:none !important;
+}
+
+.text-center{
+    text-align:center;
+}
+
+.mt-20{
+    margin-top:20px;
+}
+
+.mb-20{
+    margin-bottom:20px;
+}
+
+.round{
+    border-radius:12px;
 }
