@@ -1,8 +1,8 @@
-/* ==========================
+/* ==========================================
    Adiyan Live TV
    style.css
-   Part-1
-========================== */
+   Chapter 1
+========================================== */
 
 *{
     margin:0;
@@ -10,10 +10,14 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
+    font-family:'Poppins',sans-serif;
     background:#0d1117;
     color:#ffffff;
-    font-family:'Poppins',sans-serif;
 }
 
 .container{
@@ -22,18 +26,22 @@ body{
     margin:auto;
 }
 
+/* ==========================
+   Header
+========================== */
+
 .header{
     width:100%;
     background:#161b22;
-    padding:15px;
+    padding:15px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     flex-wrap:wrap;
     position:sticky;
     top:0;
-    z-index:1000;
-    box-shadow:0 2px 10px rgba(0,0,0,.4);
+    z-index:999;
+    box-shadow:0 2px 12px rgba(0,0,0,.4);
 }
 
 .logo{
@@ -49,18 +57,22 @@ body{
 
 .search-box input{
     width:100%;
-    padding:12px;
+    padding:12px 15px;
     border:none;
-    border-radius:8px;
+    border-radius:10px;
+    outline:none;
     background:#21262d;
     color:#ffffff;
-    font-size:16px;
-    outline:none;
+    font-size:15px;
 }
 
 .search-box input::placeholder{
-    color:#999999;
+    color:#9ca3af;
 }
+
+/* ==========================
+   Player
+========================== */
 
 .player-area{
     width:95%;
@@ -69,8 +81,8 @@ body{
 
 #videoPlayer{
     width:100%;
+    background:#000;
     border-radius:12px;
-    background:#000000;
 }
 
 .player-info{
@@ -86,26 +98,86 @@ body{
     color:#bdbdbd;
     font-size:15px;
 }
-/* ==========================
-   Part-2
-   Channel Card
-========================== */
+/* ==========================================
+   Chapter 2
+   Buttons, Status & Channel List
+========================================== */
+
+/* Player Buttons */
+
+.player-controls{
+    width:95%;
+    margin:20px auto;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:12px 22px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+    background:#00d4ff;
+    color:#000;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    opacity:.9;
+}
+
+#stopBtn{
+    background:#ef4444;
+    color:#fff;
+}
+
+#fullscreenBtn{
+    background:#22c55e;
+    color:#fff;
+}
+
+#favoriteBtn{
+    background:#f59e0b;
+    color:#fff;
+}
+
+/* Channel Status */
+
+.channel-status{
+    width:95%;
+    margin:10px auto 20px;
+    font-size:16px;
+    color:#d1d5db;
+}
+
+#channelCount{
+    color:#00d4ff;
+    font-weight:bold;
+}
+
+/* Channel Grid */
 
 .channel-list{
     width:95%;
-    margin:25px auto;
+    margin:20px auto;
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
     gap:18px;
 }
 
+/* Channel Card */
+
 .channel-card{
     background:#161b22;
+    border:1px solid #2d333b;
     border-radius:12px;
     overflow:hidden;
     cursor:pointer;
     transition:.3s;
-    border:1px solid #2d333b;
 }
 
 .channel-card:hover{
@@ -134,72 +206,47 @@ body{
     color:#9ca3af;
     font-size:14px;
 }
+/* ==========================================
+   Chapter 3
+   Loading, Error, Toast, Channel Info & Footer
+========================================== */
 
 /* ==========================
-   Player Buttons
-========================== */
-
-.player-controls{
-    width:95%;
-    margin:20px auto;
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-}
-
-.player-controls button{
-    padding:12px 20px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:15px;
-    font-weight:600;
-    transition:.3s;
-    background:#00d4ff;
-    color:#000;
-}
-
-.player-controls button:hover{
-    transform:scale(1.05);
-}
-
-#stopBtn{
-    background:#ff4d4d;
-    color:#fff;
-}
-
-#fullscreenBtn{
-    background:#22c55e;
-    color:#fff;
-}
-
-/* ==========================
-   Loading Animation
+   Loading
 ========================== */
 
 .loading{
-    display:none;
-    text-align:center;
-    padding:30px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:40px 20px;
 }
 
-.loading.show{
-    display:block;
+.hidden{
+    display:none !important;
 }
 
 .loader{
-    width:45px;
-    height:45px;
-    border:5px solid #333;
+    width:50px;
+    height:50px;
+    border:5px solid #2d333b;
     border-top:5px solid #00d4ff;
     border-radius:50%;
     animation:spin 1s linear infinite;
-    margin:auto;
+    margin-bottom:15px;
 }
 
 @keyframes spin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
+
+0%{
+    transform:rotate(0deg);
+}
+
+100%{
+    transform:rotate(360deg);
+}
+
 }
 
 /* ==========================
@@ -207,78 +254,19 @@ body{
 ========================== */
 
 .error-box{
-    display:none;
     width:95%;
     margin:20px auto;
     padding:15px;
-    background:#8b0000;
-    color:#fff;
-    border-radius:8px;
+    background:#dc2626;
+    color:#ffffff;
     text-align:center;
-}
-
-.error-box.show{
-    display:block;
+    border-radius:10px;
+    font-weight:600;
 }
 
 /* ==========================
-   Mobile Responsive
+   Toast Message
 ========================== */
-
-@media(max-width:768px){
-
-.header{
-    flex-direction:column;
-    gap:15px;
-}
-
-.logo{
-    font-size:22px;
-}
-
-.search-box{
-    width:100%;
-}
-
-.player-controls{
-    justify-content:center;
-}
-
-.player-controls button{
-    flex:1;
-    min-width:120px;
-}
-
-.channel-list{
-    grid-template-columns:1fr;
-}
-
-.channel-card img{
-    height:180px;
-}
-
-.player-info h2{
-    font-size:20px;
-}
-
-}
-/* ==========================
-   Part-3 (Final)
-========================== */
-
-/* Footer */
-
-.footer{
-    width:100%;
-    margin-top:40px;
-    padding:20px;
-    background:#161b22;
-    text-align:center;
-    color:#bdbdbd;
-    font-size:14px;
-}
-
-/* Toast Notification */
 
 .toast{
     position:fixed;
@@ -287,42 +275,109 @@ body{
     background:#00d4ff;
     color:#000;
     padding:12px 18px;
-    border-radius:8px;
+    border-radius:10px;
     font-weight:600;
-    display:none;
+    box-shadow:0 8px 20px rgba(0,0,0,.35);
     z-index:9999;
-    box-shadow:0 5px 20px rgba(0,0,0,.3);
 }
 
-.toast.show{
-    display:block;
-    animation:fadeIn .3s ease;
-}
-
-/* Offline Banner */
+/* ==========================
+   Offline Banner
+========================== */
 
 .offline-banner{
-    display:none;
+    position:fixed;
+    top:0;
+    left:0;
     width:100%;
-    background:#ff3b30;
+    background:#ef4444;
     color:#fff;
     text-align:center;
-    padding:10px;
+    padding:12px;
     font-weight:bold;
+    z-index:10000;
 }
 
-.offline-banner.show{
-    display:block;
+/* ==========================
+   Channel Information
+========================== */
+
+.channel-info{
+    width:95%;
+    margin:25px auto;
+    background:#161b22;
+    border:1px solid #2d333b;
+    border-radius:12px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
-/* Scrollbar */
+.channel-logo img{
+    width:80px;
+    height:80px;
+    border-radius:12px;
+    object-fit:cover;
+    background:#000;
+}
+
+.channel-details{
+    flex:1;
+}
+
+.channel-details h3{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.channel-details p{
+    color:#9ca3af;
+    font-size:15px;
+}
+
+/* ==========================
+   Footer
+========================== */
+
+.footer{
+    margin-top:40px;
+    background:#161b22;
+    padding:25px;
+    text-align:center;
+    color:#9ca3af;
+    line-height:1.8;
+    border-top:1px solid #2d333b;
+}
+/* ==========================================
+   Chapter 4 (Final)
+   Responsive, Scrollbar & Effects
+========================================== */
+
+/* Smooth Transition */
+
+*{
+    transition:0.25s ease;
+}
+
+/* Button Focus */
+
+button:focus,
+input:focus{
+    outline:2px solid #00d4ff;
+    outline-offset:2px;
+}
+
+/* Custom Scrollbar */
 
 ::-webkit-scrollbar{
     width:8px;
 }
 
 ::-webkit-scrollbar-track{
-    background:#0d1117;
+    background:#111827;
 }
 
 ::-webkit-scrollbar-thumb{
@@ -331,51 +386,142 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover{
-    background:#00a6cc;
+    background:#00b4d8;
 }
 
-/* Smooth Animation */
+/* Selection */
 
-button,
-.channel-card,
-input{
-    transition:all .25s ease;
+::selection{
+    background:#00d4ff;
+    color:#000;
 }
 
-/* Fade Animation */
+/* Image Animation */
 
-@keyframes fadeIn{
-
-from{
-    opacity:0;
-    transform:translateY(20px);
+.channel-card img{
+    transition:transform .3s ease;
 }
 
-to{
-    opacity:1;
-    transform:translateY(0);
+.channel-card:hover img{
+    transform:scale(1.05);
 }
 
+/* Footer Hover */
+
+.footer p:hover{
+    color:#ffffff;
 }
 
-/* Utility */
+/* Tablet */
 
-.hidden{
-    display:none !important;
+@media (max-width:992px){
+
+.header{
+    gap:15px;
 }
 
-.text-center{
+.channel-list{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.channel-info{
+    flex-direction:column;
     text-align:center;
 }
 
-.mt-20{
-    margin-top:20px;
+.channel-logo img{
+    width:70px;
+    height:70px;
 }
 
-.mb-20{
-    margin-bottom:20px;
 }
 
-.round{
-    border-radius:12px;
+/* Mobile */
+
+@media (max-width:768px){
+
+.header{
+    flex-direction:column;
+    align-items:stretch;
+}
+
+.logo{
+    text-align:center;
+    font-size:24px;
+}
+
+.search-box{
+    width:100%;
+}
+
+.player-controls{
+    flex-direction:column;
+}
+
+.btn{
+    width:100%;
+}
+
+.channel-list{
+    grid-template-columns:1fr;
+}
+
+.player-info h2{
+    font-size:20px;
+}
+
+.player-info p{
+    font-size:14px;
+}
+
+.channel-details h3{
+    font-size:18px;
+}
+
+.channel-details p{
+    font-size:14px;
+}
+
+.footer{
+    font-size:13px;
+}
+
+}
+
+/* Small Mobile */
+
+@media (max-width:480px){
+
+#videoPlayer{
+    border-radius:8px;
+}
+
+.logo{
+    font-size:20px;
+}
+
+.header{
+    padding:12px;
+}
+
+.search-box input{
+    font-size:14px;
+    padding:10px;
+}
+
+.channel-card{
+    border-radius:10px;
+}
+
+.channel-card img{
+    height:160px;
+}
+
+.toast{
+    left:15px;
+    right:15px;
+    bottom:15px;
+    text-align:center;
+}
+
 }
