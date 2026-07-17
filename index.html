@@ -5,29 +5,21 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Adiyan Live TV</title>
 
-<meta name="theme-color"
-content="#0d1117">
+<meta name="theme-color" content="#111827">
 
-<meta name="description"
-content="Adiyan Live TV">
+<meta name="description" content="Adiyan Live TV">
 
-<link rel="stylesheet"
-href="style.css">
+<link rel="stylesheet" href="style.css">
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
@@ -50,7 +42,7 @@ rel="stylesheet">
 <input
 type="text"
 id="searchInput"
-placeholder="Search Channel">
+placeholder="Search TV Channel...">
 
 </div>
 
@@ -61,15 +53,10 @@ placeholder="Search Channel">
 <section class="player-area">
 
 <video
-
 id="videoPlayer"
-
 controls
-
 autoplay
-
 playsinline
-
 poster="assets/default.png">
 
 </video>
@@ -84,32 +71,40 @@ Select a Channel
 
 <p id="channelDescription">
 
-Welcome to Adiyan Live TV
+Choose a TV channel from the list below.
 
 </p>
 
 </div>
 
 </section>
+<!-- =========================
+     Player Controls
+========================= -->
+
 <section class="player-controls">
 
-<button id="playBtn">
+<button id="playBtn" class="btn">
 ▶ Play
 </button>
 
-<button id="stopBtn">
+<button id="stopBtn" class="btn">
 ⏹ Stop
 </button>
 
-<button id="fullscreenBtn">
+<button id="fullscreenBtn" class="btn">
 ⛶ Full Screen
 </button>
 
 </section>
 
-<section class="channel-search-result">
+<!-- =========================
+     Channel Status
+========================= -->
 
-<p id="totalChannels">
+<section class="channel-status">
+
+<p>
 
 Total Channels :
 <span id="channelCount">0</span>
@@ -118,17 +113,25 @@ Total Channels :
 
 </section>
 
+<!-- =========================
+     Channel List
+========================= -->
+
 <section
 id="channelList"
 class="channel-list">
 
-<!-- Channel Card এখান থেকে app.js তৈরি করবে -->
+<!-- Firebase থেকে Channel Card এখানে তৈরি হবে -->
 
 </section>
 
+<!-- =========================
+     Loading Screen
+========================= -->
+
 <div
 id="loading"
-class="loading">
+class="loading hidden">
 
 <div class="loader"></div>
 
@@ -140,16 +143,127 @@ Loading Channels...
 
 </div>
 
+<!-- =========================
+     Error Message
+========================= -->
+
 <div
 id="errorBox"
-class="error-box">
+class="error-box hidden">
 
 <p>
 
-Channel Not Available
+Channel is currently unavailable.
 
 </p>
 
 </div>
 
+<!-- =========================
+     Toast Notification
+========================= -->
+
+<div
+id="toast"
+class="toast hidden">
+
+Ready
+
+</div>
+
+<!-- =========================
+     Offline Banner
+========================= -->
+
+<div
+id="offlineBanner"
+class="offline-banner hidden">
+
+No Internet Connection
+
+</div>
+<!-- =========================
+     Channel Information
+========================= -->
+
+<section class="channel-info">
+
+<div class="channel-logo">
+
+<img
+id="channelLogo"
+src="assets/default.png"
+alt="Channel Logo">
+
+</div>
+
+<div class="channel-details">
+
+<h3 id="channelName">
+
+No Channel Selected
+
+</h3>
+
+<p id="channelCategory">
+
+Live TV
+
+</p>
+
+</div>
+
+<button
+id="favoriteBtn"
+class="btn">
+
+⭐ Favorite
+
+</button>
+
+</section>
+
+<!-- =========================
+     Footer
+========================= -->
+
+<footer class="footer">
+
+<p>
+
+© 2026 Adiyan Live TV
+
+</p>
+
+<p>
+
+Powered by Firebase & Cloudflare Pages
+
+</p>
+
+<p>
+
+Version 1.0
+
+</p>
+
+</footer>
+<!-- =========================
+     Firebase Config
+========================= -->
+
+<script type="module" src="firebase-config.js"></script>
+
+<!-- =========================
+     Main JavaScript
+========================= -->
+
+<script type="module" src="app.js"></script>
+
 </main>
+
+</div>
+
+</body>
+
+</html>
